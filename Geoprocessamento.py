@@ -83,9 +83,9 @@ def encontrar_endereco(endereco, s, tentativa, espera):
 def Arquivo_saida(data, index):
     Nome_criar_sessao = (output_file_path + str(index) + ".csv")
     print("Criado com sucesso o arquivo de saida " + Nome_criar_sessao)
-    done = pd.DataFrame(data)
-    done.columns = ['Endereco', 'Lat', 'Long', 'Provedor']
-    done.to_csv((Nome_criar_sessao + ".csv"), sep=',', encoding='utf8')
+    aux = pd.DataFrame(data)
+    aux.columns = ['Endereco', 'Lat', 'Long', 'Provedor']
+    aux.to_csv((Nome_criar_sessao + ".csv"), sep=',', encoding='utf8')
 
 
 print("Processo terminado com sucesso !")
