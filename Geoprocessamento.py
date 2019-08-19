@@ -101,8 +101,7 @@ for i, endereco in enumerate(Enderecos[indice:]):
     if ((indice + i) % quantidade == 0):
         total_falhas += falhas
         print(
-            "Completado {} de {}. falhas {} para {} no total.".format(i + indice, Progesso, falhas,
-                                                                                     total_falhas))
+            "Completado {} de {}. falhas {} para {} no total.".format(i + indice, Progesso, falhas, total_falhas))
         falhas = 0
 
 
@@ -139,6 +138,7 @@ for i, endereco in enumerate(Enderecos[indice:]):
         Arquivo_saida(Resultado, i + indice)
 
     print(i, g.latlng, g.provider)
+
 
 
 
