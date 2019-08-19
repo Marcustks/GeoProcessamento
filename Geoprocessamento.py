@@ -24,14 +24,14 @@ Nome_coluna_cep = "CEP"
 
 
 indice = 0
-quantidade = 100
-escrita_quantidade = 1000
+quantidade = 10000
+escrita_quantidade = 100000
 geocode = 3
 espera = 3
 
 # ----------------------------- Leitura do csv -----------------------------#
 
-arquivo = pd.read_csv(input_file_path, low_memory=False)
+arquivo = pd.read_csv(input_file_path, low_memory=False, error_bad_lines=False)
 
 if Nome_coluna_endereco not in arquivo.columns:
     raise ValueError("Não foi possivel localizar a coluna do endereço.")
