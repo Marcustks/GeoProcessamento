@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78d580e7-c8ce-4170-98ae-f135ebc4b546" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Marck.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Geoprocessamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/Geoprocessamento.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input.csv" afterDir="false" />
