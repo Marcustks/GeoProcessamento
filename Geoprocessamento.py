@@ -76,16 +76,71 @@ def encontrar_endereco(endereco, s, tentativa, espera):
     return g
 
 
-# ----- out csv --- #
+# ----- saida csv --- #
 
 
 
 def Arquivo_saida(data, index):
-    Nome_criar_sessao = (output_file_path + str(index) + ".csv")
-    print("Criado com sucesso o arquivo de saida " + Nome_criar_sessao)
-    aux = pd.DataFrame(data)
-    aux.columns = ['Endereco', 'Lat', 'Long', 'Provedor']
-    aux.to_csv((Nome_criar_sessao + ".csv"), sep=',', encoding='utf8')
+    Nome_arquivo_saida = (output_file_path + str(index) + ".csv")
+    print("Criado com sucesso o arquivo de saida" + Nome_arquivo_saida)
+    done = pd.DataFrame(data)
+    done.columns = ['endereco', 'Lat', 'Long', 'Provedor']
+    done.to_csv((Nome_arquivo_saida + ".csv"), sep=',', encoding='utf8')
+
+#----------- var02 -------------#
+s = criar_sessao()
+Resultado = []
+falhas = 0
+total_falhas = 0
+Progesso = len(Enderecos) - indice
+
+# ----------------------------- busca -----------------------------#
+
+for i, endereco in enumerate(Enderecos[indice:]):
+
+    if ((indice + i) % quantidade == 0):
+        total_falhas += falhas
+        print(
+            "Completado {} de {}. falhas {} para {} no total.".format(i + indice, Progesso, falhas,
+                                                                                     total_falhas))
+        falhas = 0
 
 
-print("Processo terminado com sucesso !")
+    try:
+        g = encontrar_endereco(endereco, s, geocode, espera)
+        if (g.ok == False):
+            Resultado.append([endereco, "Não", "Foi", "Possivel encontrar o endereço"])
+            print("sucesso ao endereço: " + endereco)
+            falhas += 1
+        else:
+            Resultado.append([endereco, g.latlng[0], g.latlng[1], g.provider])
+
+
+    except Exception as e:
+        print("Foi encontrada {} Falhas para o endereco {}. Tentar novamente....".format(e, endereco))
+        try:
+            time.sleep(5)
+            s = criar_sessao()
+            g = geocode_endereco(endereco, s)
+            if (g.ok == False):
+                print("Não foi possivel encontrar.")
+                Resultado.append([endereco, "Não", "foi", "Possivel encontrar o endereço"])
+                falhas += 1
+            else:
+                print("Encontrado")
+                Resultado.append([endereco, g.latlng[0], g.latlng[1], g.provider])
+        except Exception as e:
+            print("Foi encontrada {} falhas para o endereco {} again.".format(e, endereco))
+            falhas += 1
+            Resultado.append([endereco, e, e, "ERROR"])
+
+
+    if (i%escrita_quantidade == 0 and i != 0):
+        Arquivo_saida(Resultado, i + indice)
+
+    print(i, g.latlng, g.provider)
+
+
+
+Arquivo_saida(Resultado, i + indice + 1)
+print("Fim da execução!:")
