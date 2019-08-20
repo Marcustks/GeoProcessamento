@@ -6,4 +6,4 @@ client: MongoClient = pymongo.MongoClient("mongodb+srv://sys:<marcossales21>@clu
 db = client['tcc']
 album = db['txt']
 
-album.find_onde()
+album.find_one()
