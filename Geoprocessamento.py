@@ -11,7 +11,14 @@ import geocoder
 import pandas as pd
 import requests
 
+
+
+
+
 # ----------------------------- Entrada de dados -----------------------------#
+
+
+
 
 
 input_file_path = "input.csv"
