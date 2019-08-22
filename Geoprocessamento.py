@@ -24,10 +24,10 @@ client = pymongo.MongoClient(
 db = client.tcc
 collection = db.txt
 print('conexão ok')
+x = db.Geoprocessamento.count()
+x=x+1
 
-
-
-x= '1'
+x= str(x)
 while True:
  x = str(x)
  endereco = collection.find_one( {"ID": x })
