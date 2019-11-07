@@ -21,10 +21,10 @@
 
 # GeoProcessamento
 
- Planejamento .......... 5%
- Codigo................. 2%
- Execução............... 0% 
- Aplicação final........ 0%
+ Planejamento .......... 90%
+ Codigo................. 99%
+ Execução............... 100% 
+ Aplicação final........ 90%
  
 # Descrição 
 Aplicação Python de geocodificação em batch de endereços; Este script usa um serviços de geoficador de endereços do ArcGIS e Komoot.
